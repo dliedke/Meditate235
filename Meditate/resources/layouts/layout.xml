@@ -1,0 +1,6 @@
+<layouts>	
+	<layout id="delayedFinishing">
+		<drawable id="blackBackground" />
+		<label id="delayedFinishingText" x="center" y="center" text="@Strings.activityDelayedFinishingText" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
+	</layout>
+</layouts>

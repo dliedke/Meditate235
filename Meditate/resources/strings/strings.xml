@@ -67,28 +67,28 @@
     <string id="addEditSessionMenu_title">Session</string>
     <string id="addEditSessionMenu_time">Time</string>
     <string id="addEditSessionMenu_color">Color</string>
-    <string id="addEditSessionMenu_vibePattern">Vibe Pattern</string>
+    <string id="addEditSessionMenu_vibePattern">Sound</string>
 	<string id="addEditSessionMenu_intervalAlerts">Interval Alerts</string>
 	<string id="addEditSessionMenu_activityType">Activity Type</string>
 	<string id="addEditSessionMenu_hrvTracking">HRV Tracking</string>
 	
 	<string id="intervalAlertTransparentColorText">Transparent</string>
 	
-	<string id="vibePatternMenu_title">Vibe Pattern</string>
-	<string id="vibePatternMenu_longPulsating">Long pulsating</string>
-	<string id="vibePatternMenu_longContinuous">Long continuous</string>
-	<string id="vibePatternMenu_longAscending">Long ascending</string>
-	<string id="vibePatternMenu_mediumPulsating">Medium pulsating</string>
-	<string id="vibePatternMenu_mediumContinuous">Medium continuous</string>
-	<string id="vibePatternMenu_mediumAscending">Medium ascending</string>
-	<string id="vibePatternMenu_shortPulsating">Short pulsating</string>
-	<string id="vibePatternMenu_shortContinuous">Short continuous</string>
-	<string id="vibePatternMenu_shortAscending">Short ascending</string>
+	<string id="vibePatternMenu_title">Sound</string>
+	<string id="vibePatternMenu_longPulsating">ALARM</string>
+	<string id="vibePatternMenu_longContinuous">SUCCESS</string>
+	<string id="vibePatternMenu_longAscending">ALERT_HI</string>
+	<string id="vibePatternMenu_mediumPulsating">TIME_ALERT</string>
+	<string id="vibePatternMenu_mediumContinuous">LOUD_BEEP</string>
+	<string id="vibePatternMenu_mediumAscending">START</string>
+	<string id="vibePatternMenu_shortPulsating">LOW_BATTERY</string>
+	<string id="vibePatternMenu_shortContinuous">CANARY</string>
+	<string id="vibePatternMenu_shortAscending">ALERT_LO</string>
 	
-	<string id="intervalVibePatternMenu_title">Vibe Pattern</string>
-	<string id="intervalVibePatternMenu_shorterContinuous">Shorter continuous</string>
-	<string id="intervalVibePatternMenu_shorterAscending">Shorter ascending</string>
-	<string id="intervalVibePatternMenu_blip">Blip</string>
+	<string id="intervalVibePatternMenu_title">Sound</string>
+	<string id="intervalVibePatternMenu_shorterContinuous">CANARY</string>
+	<string id="intervalVibePatternMenu_shorterAscending">ALERT_LO</string>
+	<string id="intervalVibePatternMenu_blip">MSG</string>
 		
 	<string id="intervalTypeMenu_title">Interval Alert Type</string>
 	<string id="intervalTypeMenu_oneOff">One-off H:MM</string>

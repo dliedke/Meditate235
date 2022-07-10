@@ -135,23 +135,23 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 	private static function getVibePatternText(vibePattern) {
 		switch (vibePattern) {
 			case VibePattern.LongPulsating:
-				return "Long Pulsating";
+				return "ALARM";
 			case VibePattern.LongAscending:
-				return "Long Ascending";
+				return "ALERT_HI";
 			case VibePattern.LongContinuous:
-				return "Long Continuous";
+				return "SUCCESS";
 			case VibePattern.MediumAscending:
-				return "Medium Ascending";
+				return "START";
 			case VibePattern.MediumContinuous:
-				return "Medium Continuous";
+				return "LOUD_BEEP";
 			case VibePattern.MediumPulsating:
-				return "Medium Pulsating";
+				return "TIME_ALERT";
 			case VibePattern.ShortAscending:
-				return "Short Ascending";
+				return "START";
 			case VibePattern.ShortContinuous:
-				return "Short Continuous";
+				return "CANARY";
 			case VibePattern.ShortPulsating:
-				return "Short Pulsating";
+				return "LOW_BATTERY";
 		}
 	}
 	

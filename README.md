@@ -1,6 +1,6 @@
 # Meditate
 
-A Garmin Connect IQ meditation app that tracks as an activity the heart rate, HRV, stress and provides vibration alerts.
+A Garmin Connect IQ meditation app that tracks as an activity the heart rate, HRV, stress and provides sound alerts for Garmin Forerunner 235.
 
 ## Features
 
@@ -28,25 +28,16 @@ A Garmin Connect IQ meditation app that tracks as an activity the heart rate, HR
       - HR calculated from beat-to-beat interval.
 - summary stats at the end of the session
     - tracks the overall min, avg and max HR
-    - Stress
-    - HRV
 
 ![Session picker demo](userGuideScreenshots/sessionPickerDemo.gif)
 ![Session demo detailed](userGuideScreenshots/sessionDetailedDemo.gif)
 
 ## Supported Devices
-- Vivoactive 3, Vivoactive 3 Music 
-  - [app store link](https://apps.garmin.com/en-US/apps/bed7ed4d-07ea-4600-b477-b8911670b64a)
-  - from [vivoactive3-publish](https://github.com/vtrifonov-esfiddle/Meditate/tree/vivoactive3-publish) branch
-- Round Watches that support Connect IQ >= 3.0 
-  - [app store link](https://apps.garmin.com/en-US/apps/1cc98099-c08b-4fc7-91e6-0f3615a3ab2c)
-  - from [round-watches-publish](https://github.com/vtrifonov-esfiddle/Meditate/tree/round-watches-publish) branch
-  - Most round watches other thant Vivoactive 3 are supported
-
+- Garmin Forerunner 235
+ 
 ## [User Guide](UserGuide.md)
 
 ## Dependencies
 - Font for duration picker [Google Roboto](https://fonts.google.com/specimen/Roboto) ([Apache License v2.0](http://www.apache.org/licenses/LICENSE-2.0))
-- Status Icons - [Font Awesome free](https://fontawesome.com/license) (SIL OFL 1.1 License) 
 
 

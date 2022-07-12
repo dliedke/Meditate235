@@ -18,7 +18,7 @@ class MeditateModel {
 	var hrvSuccessive;
 	
 	function isHrvOn() {
-		return me.mSession.hrvTracking != HrvTracking.Off;
+		return false;
 	}
 	
 	function getHrvTracking() {

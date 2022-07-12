@@ -15,7 +15,7 @@ class VibeAlertsExecutor {
 	
 	private function fireIfRequiredFinalAlert() {
 	    if (me.mMeditateModel.elapsedTime >= me.mMeditateModel.getSessionTime()) {	    	
-			Vibe.vibrate(me.mMeditateModel.getVibePattern());
+			Attention.playTone(Attention.TONE_SUCCESS);
 			me.mIsFinalAlertPending = false;
 	    }
 	}

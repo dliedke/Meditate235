@@ -34,7 +34,6 @@ class SessionModel {
 		me.color = loadedSessionDictionary["color"];
 		me.vibePattern = loadedSessionDictionary["vibePattern"];
 		me.activityType = loadedSessionDictionary["activityType"];		
-		me.hrvTracking = loadedSessionDictionary["hrvTracking"];
 	}
 
 	function toDictionary() {	
@@ -43,7 +42,6 @@ class SessionModel {
 			"color" => me.color,
 			"vibePattern" => me.vibePattern,
 			"activityType" => me.activityType,
-			"hrvTracking" => me.hrvTracking
 		};
 	}
 		
@@ -53,7 +51,6 @@ class SessionModel {
 		me.color = Gfx.COLOR_BLUE;
 		me.vibePattern = VibePattern.LongContinuous;		
 		me.activityType = "Meditate";
-		me.hrvTracking = HrvTracking.OnDetailed;
 		}
 
 		if (index == 1) {
@@ -61,7 +58,6 @@ class SessionModel {
 		me.color = Gfx.COLOR_GREEN;
 		me.vibePattern = VibePattern.LongContinuous;		
 		me.activityType = "Meditate";
-		me.hrvTracking = HrvTracking.OnDetailed;
 		}
 
 		if (index == 2) {
@@ -69,7 +65,6 @@ class SessionModel {
 		me.color = Gfx.COLOR_YELLOW;
 		me.vibePattern = VibePattern.LongContinuous;		
 		me.activityType = "Meditate";
-		me.hrvTracking = HrvTracking.OnDetailed;
 		}
 
 		if (index == 3) {
@@ -77,7 +72,6 @@ class SessionModel {
 		me.color = Gfx.COLOR_BLUE;
 		me.vibePattern = VibePattern.LongContinuous;		
 		me.activityType = "Meditate";
-		me.hrvTracking = HrvTracking.OnDetailed;
 		}
 
 		if (index == 4) {
@@ -85,7 +79,6 @@ class SessionModel {
 		me.color = Gfx.COLOR_GREEN;
 		me.vibePattern = VibePattern.LongContinuous;		
 		me.activityType = "Meditate";
-		me.hrvTracking = HrvTracking.OnDetailed;
 		}
 	}
 	

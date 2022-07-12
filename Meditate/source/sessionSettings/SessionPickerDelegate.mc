@@ -33,22 +33,11 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 	
 	function setTestModeHeartbeatIntervalsSensor(hrvTracking) {	
 		if (hrvTracking == me.mLastHrvTracking) {
-			if (hrvTracking != HrvTracking.Off) {	
-		        me.mHeartbeatIntervalsSensor.setOneSecBeatToBeatIntervalsSensorListener(method(:onHeartbeatIntervalsListener));
-	        }
-	        else {
 	        	me.mHeartbeatIntervalsSensor.setOneSecBeatToBeatIntervalsSensorListener(null);
-	        }
 		}
 		else {		
-			if (hrvTracking != HrvTracking.Off) {	
-		        me.mHeartbeatIntervalsSensor.start();
-		        me.mHeartbeatIntervalsSensor.setOneSecBeatToBeatIntervalsSensorListener(method(:onHeartbeatIntervalsListener));
-	        }
-	        else {
-	        	me.mHeartbeatIntervalsSensor.stop();
+				me.mHeartbeatIntervalsSensor.stop();
 	        	me.mHeartbeatIntervalsSensor.setOneSecBeatToBeatIntervalsSensorListener(null);
-	        }
         }
         me.mLastHrvTracking = hrvTracking;
 	}
@@ -63,7 +52,7 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 	private var sessionDetailsYOffset;
 		
     function onMenu() {
-		return me.showSessionSettingsMenu();
+		
     }
     
     private const RollupExitOption = :exitApp;
@@ -102,13 +91,7 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 	    	Ui.pushView(summaryViewDelegate.createScreenPickerView(), summaryViewDelegate, Ui.SLIDE_LEFT); 
     	}
     }
-    
-    private function showSessionSettingsMenu() {
-    	var sessionSettingsMenuDelegate = new SessionSettingsMenuDelegate(me.mSessionStorage, me);
-        Ui.pushView(new Rez.Menus.sessionSettingsMenu(), sessionSettingsMenuDelegate, Ui.SLIDE_UP);
-        return true;
-    }
-		
+    	
 	private function startActivity() {
     	var selectedSession = me.mSessionStorage.loadSelectedSession();
     	var meditateModel = new MeditateModel(selectedSession);      	  
@@ -131,29 +114,6 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 		var session = me.mSessionStorage.loadSelectedSession();			
 		me.updateSelectedSessionDetails(session);
 	}
-		
-	private static function getVibePatternText(vibePattern) {
-		switch (vibePattern) {
-			case VibePattern.LongPulsating:
-				return "Long Pulsating";
-			case VibePattern.LongAscending:
-				return "Long Ascending";
-			case VibePattern.LongContinuous:
-				return "Long Continuous";
-			case VibePattern.MediumAscending:
-				return "Medium Ascending";
-			case VibePattern.MediumContinuous:
-				return "Medium Continuous";
-			case VibePattern.MediumPulsating:
-				return "Medium Pulsating";
-			case VibePattern.ShortAscending:
-				return "Short Ascending";
-			case VibePattern.ShortContinuous:
-				return "Short Continuous";
-			case VibePattern.ShortPulsating:
-				return "Short Pulsating";
-		}
-	}
 	
 	private var mSuccessiveEmptyHeartbeatIntervalsCount;
 	
@@ -167,27 +127,10 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 		else {
 			me.mNoHrvSeconds = 0;
 		}
-		me.setHrvReadyStatus();
-	}
-	
-	private function setHrvReadyStatus() {
-		var hrvStatusLine = me.mSelectedSessionDetails.detailLines[4];
-		if (me.mNoHrvSeconds >= MinSecondsNoHrvDetected) {
-			hrvStatusLine.value.text = "Waiting HRV";
-		}
-		else {		
-			hrvStatusLine.value.text = "HRV Ready";
-		}
-		Ui.requestUpdate();
 	}
 	
 	private function setInitialHrvStatus(hrvStatusLine, session) {
-		if (session.hrvTracking == HrvTracking.Off) {
-			hrvStatusLine.value.text = "HRV off";		
-		}
-		else {
-			hrvStatusLine.value.text = "Waiting HRV";
-		}
+			hrvStatusLine.value.text = "";		
 	}
 	
 	function addSummary(summaryModel) {
@@ -213,7 +156,7 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
         
        
         details.detailLines[1].value.text = TimeFormatter.format(session.time);
-        details.detailLines[2].value.text = getVibePatternText(session.vibePattern);
+        details.detailLines[2].value.text = "";
      
         var alertsToHighlightsLine = new AlertsToHighlightsLine(session);
         details.detailLines[3].value = alertsToHighlightsLine.getAlertsLine(me.sessionDetailsValueXPos, me.sessionDetailsAlertsLineYOffset);

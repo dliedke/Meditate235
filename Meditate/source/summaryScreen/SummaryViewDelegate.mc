@@ -7,6 +7,8 @@ using HrvAlgorithms.HrvTracking;
 class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 	private var mSummaryModel;
 	private var mDiscardDanglingActivity;
+	private var mSummaryLinesYOffset;
+	private var mPagesCount;
 
 	function initialize(summaryModel, discardDanglingActivity) {		
 		me.mPagesCount = 1;
@@ -16,9 +18,6 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
         me.mDiscardDanglingActivity = discardDanglingActivity;
         me.mSummaryLinesYOffset = App.getApp().getProperty("summaryLinesYOffset");
 	}
-		
-	private var mSummaryLinesYOffset;
-	private var mPagesCount;
 	
 	function onBack() {
 		if (me.mDiscardDanglingActivity != null) {
@@ -31,7 +30,7 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 	function createScreenPickerView() {
 		var details;
 		details = me.createDetailsPageHr();
-		return new ScreenPicker.ScreenPickerDetailsSinglePageView(details);
+		return new ScreenPicker.ScreenPickerDetailsView(details);
 	}	
 				
 	private function formatHr(hr) {
@@ -39,6 +38,7 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 	}
 	
 	private function createDetailsPageHr() {
+
 		var details = new ScreenPicker.DetailsModel();
 		details.color = Gfx.COLOR_BLACK;
         details.backgroundColor = Gfx.COLOR_WHITE;

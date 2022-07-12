@@ -8,16 +8,6 @@ class SummaryModel {
 		me.avgHr = me.initializeHeartRate(activitySummary.hrSummary.averageHr);
 		me.minHr = me.initializeHeartRate(activitySummary.hrSummary.minHr);
 		
-		me.stress = me.initializePercentageValue(activitySummary.stress);
-		
-		if (activitySummary.hrvSummary != null) {
-			me.hrvRmssd = me.initializeHeartRateVariability(activitySummary.hrvSummary.rmssd);
-			me.hrvFirst5Min = me.initializeHeartRateVariability(activitySummary.hrvSummary.first5MinSdrr);
-			me.hrvLast5Min = me.initializeHeartRateVariability(activitySummary.hrvSummary.last5MinSdrr);
-			me.hrvPnn50 = me.initializePercentageValue(activitySummary.hrvSummary.pnn50);
-			me.hrvPnn20 = me.initializePercentageValue(activitySummary.hrvSummary.pnn20);
-		}
-		
 		me.hrvTracking = hrvTracking;
 	}
 	
@@ -38,15 +28,6 @@ class SummaryModel {
 			return stressScore.format("%3.2f");
 		}
 	}
-	
-	private function initializeHeartRateVariability(hrv) {
-		if (hrv == null) {
-			return me.InvalidHeartRate;
-		}
-		else {
-			return hrv.format("%3.2f");
-		}
-	}
 		
 	private const InvalidHeartRate = "--";
 	
@@ -55,14 +36,6 @@ class SummaryModel {
 	var maxHr;
 	var avgHr;
 	var minHr;	
-	
-	var stress;
-		
-	var hrvRmssd;
-	var hrvFirst5Min;
-	var hrvLast5Min;
-	var hrvPnn50;
-	var hrvPnn20;
 	
 	var hrvTracking;
 }

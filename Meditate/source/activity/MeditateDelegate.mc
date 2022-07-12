@@ -26,24 +26,10 @@ class MeditateDelegate extends Ui.BehaviorDelegate {
 	    
     function onFinishActivity() {  
     	me.mSummaryModel = me.mMeditateActivity.calculateSummaryFields();
-		    	
-    	var confirmSaveActivity = GlobalSettings.loadConfirmSaveActivity();
-    	if (confirmSaveActivity == ConfirmSaveActivity.AutoYes) { 
-			//Made sure reading/writing session settings for the next session in multi-session mode happens before saving the FIT file.
-			//If both happen at the same time FIT file gets corrupted			
-			me.mMeditateActivity.finish();
-			var saveActivityView = new DelayedFinishingView(me.method(:onShowNextView));
-			Ui.switchToView(saveActivityView, me, Ui.SLIDE_IMMEDIATE);    		
-        }
-        else if (confirmSaveActivity == ConfirmSaveActivity.AutoNo) {
-        	me.mMeditateActivity.discard(); 
-        	var nextView = new DelayedFinishingView(method(:onShowNextView));
-			Ui.switchToView(nextView, me, Ui.SLIDE_IMMEDIATE);	
-        }   
-        else { 	
-        	var nextView = new DelayedFinishingView(method(:onShowNextViewConfirmDialog));
-			Ui.switchToView(nextView, me, Ui.SLIDE_IMMEDIATE);
-        }
+	
+		var nextView = new DelayedFinishingView(method(:onShowNextViewConfirmDialog));
+		Ui.switchToView(nextView, me, Ui.SLIDE_IMMEDIATE);
+        
     }   
     
     //this reads/writes session settings and needs to happen before saving session to avoid FIT file corruption          
@@ -61,16 +47,12 @@ class MeditateDelegate extends Ui.BehaviorDelegate {
     }
     
     function onShowNextView() {    
-    	var continueAfterFinishingSession = GlobalSettings.loadMultiSession();
-		if (continueAfterFinishingSession == MultiSession.Yes) {
-			showSessionPickerView(me.mSummaryModel);
-		}
-		else {
+    	
 			me.mHeartbeatIntervalsSensor.stop();
 			me.mHeartbeatIntervalsSensor = null;
 			
 			showSummaryView(me.mSummaryModel);
-		}
+		
     }
     
     private function showSessionPickerView(summaryModel) {		

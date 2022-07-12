@@ -135,23 +135,23 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 	private static function getVibePatternText(vibePattern) {
 		switch (vibePattern) {
 			case VibePattern.LongPulsating:
-				return "ALARM";
+				return "Long Pulsating";
 			case VibePattern.LongAscending:
-				return "ALERT_HI";
+				return "Long Ascending";
 			case VibePattern.LongContinuous:
-				return "SUCCESS";
+				return "Long Continuous";
 			case VibePattern.MediumAscending:
-				return "START";
+				return "Medium Ascending";
 			case VibePattern.MediumContinuous:
-				return "LOUD_BEEP";
+				return "Medium Continuous";
 			case VibePattern.MediumPulsating:
-				return "TIME_ALERT";
+				return "Medium Pulsating";
 			case VibePattern.ShortAscending:
-				return "START";
+				return "Short Ascending";
 			case VibePattern.ShortContinuous:
-				return "CANARY";
+				return "Short Continuous";
 			case VibePattern.ShortPulsating:
-				return "LOW_BATTERY";
+				return "Short Pulsating";
 		}
 	}
 	
@@ -173,29 +173,19 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 	private function setHrvReadyStatus() {
 		var hrvStatusLine = me.mSelectedSessionDetails.detailLines[4];
 		if (me.mNoHrvSeconds >= MinSecondsNoHrvDetected) {
-			hrvStatusLine.icon.setStatusWarning();
 			hrvStatusLine.value.text = "Waiting HRV";
 		}
 		else {		
-			if (me.mLastHrvTracking == HrvTracking.On) {	
-				hrvStatusLine.icon.setStatusOn();
-			}
-			else {
-				hrvStatusLine.icon.setStatusOnDetailed();
-			}
 			hrvStatusLine.value.text = "HRV Ready";
 		}
 		Ui.requestUpdate();
 	}
 	
 	private function setInitialHrvStatus(hrvStatusLine, session) {
-		hrvStatusLine.icon = new ScreenPicker.HrvIcon({});
 		if (session.hrvTracking == HrvTracking.Off) {
-			hrvStatusLine.icon.setStatusOff();
 			hrvStatusLine.value.text = "HRV off";		
 		}
 		else {
-			hrvStatusLine.icon.setStatusWarning();
 			hrvStatusLine.value.text = "Waiting HRV";
 		}
 	}
@@ -221,25 +211,10 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
         details.title = activityTypeText + " " + (me.mSelectedPageIndex + 1);
         details.titleColor = session.color;
         
-        var timeIcon = new ScreenPicker.Icon({        
-        	:font => Gfx.FONT_MEDIUM,
-        	:symbol => ""
-        });
-        details.detailLines[1].icon = timeIcon;
+       
         details.detailLines[1].value.text = TimeFormatter.format(session.time);
-        
-        var vibePatternIcon = new ScreenPicker.Icon({        
-        	:font => Gfx.FONT_MEDIUM,
-        	:symbol => ""
-        });
-        details.detailLines[2].icon = vibePatternIcon;
         details.detailLines[2].value.text = getVibePatternText(session.vibePattern);
-        
-        var alertsLineIcon = new ScreenPicker.Icon({        
-        	:font => Gfx.FONT_MEDIUM,
-        	:symbol => ""
-        });
-        details.detailLines[3].icon = alertsLineIcon;
+     
         var alertsToHighlightsLine = new AlertsToHighlightsLine(session);
         details.detailLines[3].value = alertsToHighlightsLine.getAlertsLine(me.sessionDetailsValueXPos, me.sessionDetailsAlertsLineYOffset);
         
@@ -264,30 +239,11 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 		private var mSession;
 		
 		function getAlertsLine(alertsLineXPos, alertsLineYOffset) {
-	        var alertsLine = new ScreenPicker.PercentageHighlightLine(me.mSession.intervalAlerts.count());
-
-	        alertsLine.backgroundColor = me.mSession.color;	        
-	        alertsLine.startPosX = alertsLineXPos;
-	        alertsLine.yOffset = alertsLineYOffset;
-	        	        
-	        me.AddHighlights(alertsLine, IntervalAlertType.Repeat);      
-	        me.AddHighlights(alertsLine, IntervalAlertType.OneOff);
-	        
-	        return alertsLine;
+	        return 0;
 		}
 				
 		private function AddHighlights(alertsLine, alertsType) {
-			var intervalAlerts = me.mSession.intervalAlerts;
 			
-			for (var i = 0; i < intervalAlerts.count(); i++) {
-	        	var alert = intervalAlerts.get(i);
-	        	if (alert.type == alertsType) {
-		        	var percentageTimes = alert.getAlertProgressBarPercentageTimes(me.mSession.time);
-		        	for (var percentageIndex = 0; percentageIndex < percentageTimes.size(); percentageIndex++) {   		        			
-	        			alertsLine.addHighlight(alert.color, percentageTimes[percentageIndex]);	
-		        	}
-	        	}
-	        }
 		}
 	}
 }

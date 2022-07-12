@@ -34,47 +34,59 @@ class SessionModel {
 		me.color = loadedSessionDictionary["color"];
 		me.vibePattern = loadedSessionDictionary["vibePattern"];
 		me.activityType = loadedSessionDictionary["activityType"];		
-		me.ensureActivityTypeExists();
 		me.hrvTracking = loadedSessionDictionary["hrvTracking"];
-		me.ensureHrvTrackingExists();	
-		var serializedAlerts = loadedSessionDictionary["intervalAlerts"];		
-		me.intervalAlerts = new IntervalAlerts();
-		me.intervalAlerts.fromDictionary(serializedAlerts);
 	}
-	
-	private function ensureHrvTrackingExists() {
-		if (me.hrvTracking == null) {
-			me.hrvTracking = GlobalSettings.loadHrvTracking();
-		}	
-	}
-	
-	private function ensureActivityTypeExists() {
-		if (me.activityType == null) {
-			me.activityType = GlobalSettings.loadActivityType();
-		}	
-	}
-	
+
 	function toDictionary() {	
-		var serializedAlerts = me.intervalAlerts.toDictionary();
-		me.ensureActivityTypeExists();
 		return {
 			"time" => me.time,
 			"color" => me.color,
 			"vibePattern" => me.vibePattern,
-			"intervalAlerts" => serializedAlerts,
 			"activityType" => me.activityType,
 			"hrvTracking" => me.hrvTracking
 		};
 	}
 		
-	function reset() {
-		me.time = 600;
+	function reset(index) {
+		if (index == 0) {
+		me.time = 15;
 		me.color = Gfx.COLOR_BLUE;
 		me.vibePattern = VibePattern.LongContinuous;		
-		me.activityType = GlobalSettings.loadActivityType();
-		me.hrvTracking = GlobalSettings.loadHrvTracking();
-		me.intervalAlerts = new IntervalAlerts();
-		me.intervalAlerts.reset();
+		me.activityType = "Meditate";
+		me.hrvTracking = HrvTracking.OnDetailed;
+		}
+
+		if (index == 1) {
+		me.time = 5 * 60;
+		me.color = Gfx.COLOR_GREEN;
+		me.vibePattern = VibePattern.LongContinuous;		
+		me.activityType = "Meditate";
+		me.hrvTracking = HrvTracking.OnDetailed;
+		}
+
+		if (index == 2) {
+		me.time = 10 * 60;
+		me.color = Gfx.COLOR_YELLOW;
+		me.vibePattern = VibePattern.LongContinuous;		
+		me.activityType = "Meditate";
+		me.hrvTracking = HrvTracking.OnDetailed;
+		}
+
+		if (index == 3) {
+		me.time = 15 * 60;
+		me.color = Gfx.COLOR_BLUE;
+		me.vibePattern = VibePattern.LongContinuous;		
+		me.activityType = "Meditate";
+		me.hrvTracking = HrvTracking.OnDetailed;
+		}
+
+		if (index == 4) {
+		me.time = 20 * 60;
+		me.color = Gfx.COLOR_GREEN;
+		me.vibePattern = VibePattern.LongContinuous;		
+		me.activityType = "Meditate";
+		me.hrvTracking = HrvTracking.OnDetailed;
+		}
 	}
 	
 	function copyNonNullFieldsFromSession(otherSession) {
@@ -87,9 +99,6 @@ class SessionModel {
     	if (otherSession.vibePattern != null) {
     		me.vibePattern = otherSession.vibePattern;
     	}
-    	if (otherSession.intervalAlerts != null) {
-    		me.intervalAlerts = otherSession.intervalAlerts;
-    	}
     	if (otherSession.activityType != null) {
     		me.activityType = otherSession.activityType;
     	}
@@ -101,7 +110,6 @@ class SessionModel {
 	var time;
 	var color;
 	var vibePattern;
-	var intervalAlerts;
 	var activityType;
 	var hrvTracking;
 }

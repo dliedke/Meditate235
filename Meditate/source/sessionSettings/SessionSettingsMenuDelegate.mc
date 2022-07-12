@@ -11,31 +11,7 @@ class SessionSettingsMenuDelegate extends Ui.MenuInputDelegate {
     }
 		
     function onMenuItem(item) {
-        if (item == :addNew) {
-        	var newSession = me.mSessionStorage.addSession();	
-        	var addEditSessionMenuMenuDelegate = new AddEditSessionMenuDelegate(newSession.intervalAlerts ,method(:onChangeSession));        	
-        	me.mSessionPickerDelegate.setPagesCount(me.mSessionStorage.getSessionsCount());
-        	me.mSessionPickerDelegate.select(me.mSessionStorage.getSelectedSessionIndex());
-   	        Ui.popView(Ui.SLIDE_IMMEDIATE);
-        	Ui.pushView(me.createAddEditSessionMenu(me.mSessionStorage.getSelectedSessionIndex()), addEditSessionMenuMenuDelegate, Ui.SLIDE_LEFT);        	
-        }
-        else if (item == :edit) {
-        	var existingSession = me.mSessionStorage.loadSelectedSession();
-   	        var addEditSessionMenuMenuDelegate = new AddEditSessionMenuDelegate(existingSession.intervalAlerts, method(:onChangeSession));
-   	        Ui.popView(Ui.SLIDE_IMMEDIATE);
-        	Ui.pushView(me.createAddEditSessionMenu(me.mSessionStorage.getSelectedSessionIndex()), addEditSessionMenuMenuDelegate, Ui.SLIDE_LEFT);    
-        }
-        else if (item == :delete) {
-	    	var confirmHeader = Ui.loadResource(Rez.Strings.confirmDeleteSessionHeader);
-    		var confirmDeleteSessionDialog = new Ui.Confirmation(confirmHeader);    		
-   	        Ui.popView(Ui.SLIDE_IMMEDIATE);
-        	Ui.pushView(confirmDeleteSessionDialog, new YesDelegate(method(:onConfirmedDeleteSession)), Ui.SLIDE_LEFT);
-        }
-        else if (item == :globalSettings) {
-        	Ui.popView(Ui.SLIDE_IMMEDIATE);
-        	var globalSettingsDelegate = new GlobalSettingsDelegate(me.mSessionPickerDelegate);
-        	Ui.switchToView(globalSettingsDelegate.createScreenPickerView(), globalSettingsDelegate, Ui.SLIDE_LEFT);  
-        }
+        
     }
     
     private function createAddEditSessionMenu(selectedSessionIndex) {

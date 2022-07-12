@@ -17,13 +17,17 @@ module HrvAlgorithms {
 		}
 		
 		function start() {
-			Sensor.unregisterSensorDataListener();
+			 
+			 // Only this is supported for API 1.4.0 (no HRV support)
+    		Sensor.enableSensorEvents(method(:onSessionSensorData));
+			/*
+						Sensor.unregisterSensorDataListener();
 			Sensor.registerSensorDataListener(method(:onSessionSensorData), {
 				:period => SessionSamplePeriodSeconds, 				
 				:heartBeatIntervals => {
 			        :enabled => true
 			    }
-			});
+			}); */
 		}
 		
 		function setOneSecBeatToBeatIntervalsSensorListener(listener) {
@@ -42,7 +46,7 @@ module HrvAlgorithms {
 		}		
 		
 		function stop() {
-			Sensor.unregisterSensorDataListener();
+			disableHrSensor();
 		}
 	}
 }

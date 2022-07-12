@@ -2,7 +2,12 @@ using Toybox.Application as App;
 using Toybox.Graphics as Gfx;
 
 class SessionStorage {
-	function initialize() {		
+	function initialize() {	
+		mSelectedSessionIndex = 0;
+		me.mSessionsCount = 5;
+		me.loadSelectedSession();
+
+		return;
 		me.mSelectedSessionIndex = App.Storage.getValue("selectedSessionIndex");
 		if (me.mSelectedSessionIndex == null) {
 			me.mSelectedSessionIndex = 0;
@@ -22,70 +27,43 @@ class SessionStorage {
 		
 	function selectSession(index) {
 		me.mSelectedSessionIndex = index;
-		App.Storage.setValue("selectedSessionIndex", me.mSelectedSessionIndex);
 	}
 	
 	private function getSelectedSessionKey() {
-		return me.mSessionKeysStorage.getKey(me.mSelectedSessionIndex);
+		return null;
 	}
 	
 	function loadSelectedSession() {
-		var loadedSessionDictionary = App.Storage.getValue(me.getSelectedSessionKey());
-		
 		var session = new SessionModel();
-		if (loadedSessionDictionary == null) {
-			me.mSessionsCount = 0;
-			session = me.addSession();
-		}
-		else {
-			session.fromDictionary(loadedSessionDictionary);
-		}
+		session.reset(me.mSelectedSessionIndex);
 		return session;
+
 	}
 	
 	function saveSelectedSession(session) {
-		var storageValue = session.toDictionary();
-		App.Storage.setValue(me.getSelectedSessionKey(), storageValue);
+		return;
 	}
 	
 	function getSessionsCount() {
-		return me.mSessionsCount;
+		return 5;
 	}
 	
 	function getSelectedSessionIndex() {
-		return me.mSelectedSessionIndex;
+		return 0;
 	}
 	
 	private function updateSessionStats() {
-		App.Storage.setValue("selectedSessionIndex", me.mSelectedSessionIndex);
-		App.Storage.setValue("sessionsCount", me.mSessionsCount);
+		return;
 	}
 			
 	function addSession() {
-		var session = new SessionModel();
-		session.reset();
-		me.mSessionsCount++;
-		me.mSelectedSessionIndex = me.mSessionsCount - 1;
-		if (me.mSelectedSessionIndex > 0) {
-			me.mSessionKeysStorage.addAfterInitialKey();
-		}
-		me.saveSelectedSession(session);
-		me.updateSessionStats();
+		return null;
 		
-		return session;
 	}
 	
 	function deleteSelectedSession() {
-		App.Storage.deleteValue(me.getSelectedSessionKey());
-		me.mSessionKeysStorage.deleteKey(me.mSelectedSessionIndex);
-		if (me.mSelectedSessionIndex > 0) {
-			me.mSelectedSessionIndex--;
-		}
-		if (me.mSessionsCount > 1) {
-			me.mSessionsCount--;
-		}
-		
-		me.updateSessionStats();
+		return;
+
 	}	
 }
 

@@ -46,36 +46,58 @@ class SessionModel {
 	}
 		
 	function reset(index) {
+		
+		// 5min
 		if (index == 0) {
-		me.time = 15;
-		me.color = Gfx.COLOR_BLUE;
-		me.vibePattern = VibePattern.LongContinuous;		
-		me.activityType = "Meditate";
-		}
-
-		if (index == 1) {
 		me.time = 5 * 60;
 		me.color = Gfx.COLOR_GREEN;
 		me.vibePattern = VibePattern.LongContinuous;		
 		me.activityType = "Meditate";
 		}
 
-		if (index == 2) {
+		// 10min
+		if (index == 1) {
 		me.time = 10 * 60;
 		me.color = Gfx.COLOR_YELLOW;
 		me.vibePattern = VibePattern.LongContinuous;		
 		me.activityType = "Meditate";
 		}
 
-		if (index == 3) {
+		// 15min
+		if (index == 2) {
 		me.time = 15 * 60;
 		me.color = Gfx.COLOR_BLUE;
 		me.vibePattern = VibePattern.LongContinuous;		
 		me.activityType = "Meditate";
 		}
 
-		if (index == 4) {
+		// 20min
+		if (index == 3) {
 		me.time = 20 * 60;
+		me.color = Gfx.COLOR_GREEN;
+		me.vibePattern = VibePattern.LongContinuous;		
+		me.activityType = "Meditate";
+		}
+
+		// 25min
+		if (index == 4) {
+		me.time = 25 * 60;
+		me.color = Gfx.COLOR_YELLOW;
+		me.vibePattern = VibePattern.LongContinuous;		
+		me.activityType = "Meditate";
+		}
+
+		// 30min
+		if (index == 5) {
+		me.time = 30 * 60;
+		me.color = Gfx.COLOR_BLUE;
+		me.vibePattern = VibePattern.LongContinuous;		
+		me.activityType = "Meditate";
+		}
+
+		// 15s for testing
+		if (index == 6) {
+		me.time = 15;
 		me.color = Gfx.COLOR_GREEN;
 		me.vibePattern = VibePattern.LongContinuous;		
 		me.activityType = "Meditate";

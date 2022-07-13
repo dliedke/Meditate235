@@ -11,13 +11,10 @@ class MediteActivity extends HrvAlgorithms.HrvAndStressActivity {
 	private var mVibeAlertsExecutor;	
 		
 	function initialize(meditateModel, heartbeatIntervalsSensor) {
+
 		var fitSessionSpec;
-		if (meditateModel.getActivityType() == ActivityType.Yoga) {
-			fitSessionSpec = HrvAlgorithms.FitSessionSpec.createYoga();
-		}
-		else {
-			fitSessionSpec = HrvAlgorithms.FitSessionSpec.createCardio("Meditating");
-		}
+		fitSessionSpec = HrvAlgorithms.FitSessionSpec.createCardio("Meditating");
+
 		me.mMeditateModel = meditateModel;	
 		HrvAlgorithms.HrvAndStressActivity.initialize(fitSessionSpec, meditateModel.getHrvTracking(), heartbeatIntervalsSensor);			
 	}

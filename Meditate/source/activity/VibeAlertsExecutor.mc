@@ -1,3 +1,5 @@
+using Toybox.Attention;
+
 class VibeAlertsExecutor {
 	function initialize(meditateModel) {
 		me.mMeditateModel = meditateModel;
@@ -15,8 +17,17 @@ class VibeAlertsExecutor {
 	
 	private function fireIfRequiredFinalAlert() {
 	    if (me.mMeditateModel.elapsedTime >= me.mMeditateModel.getSessionTime()) {	    	
-			Attention.playTone(Attention.TONE_SUCCESS);
+		
+			// Vibrate
+			Attention.vibrate(getLongContinuous());
+		
 			me.mIsFinalAlertPending = false;
 	    }
+	}
+
+	private static function getLongContinuous() {
+		return [
+			new Attention.VibeProfile(100, 3000)
+		];
 	}
 }

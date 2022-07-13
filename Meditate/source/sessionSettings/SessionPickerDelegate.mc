@@ -145,25 +145,16 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
         details.color = Gfx.COLOR_WHITE;
         details.backgroundColor = Gfx.COLOR_BLACK;
         var activityTypeText;
-        if (session.activityType == ActivityType.Yoga) {
-        	activityTypeText = "Yoga";
-        }
-        else {
-        	activityTypeText = "Meditate";
-        }
+        activityTypeText = "Meditate";
         details.title = activityTypeText + " " + (me.mSelectedPageIndex + 1);
         details.titleColor = session.color;
         
-       
-        details.detailLines[1].value.text = TimeFormatter.format(session.time);
-        details.detailLines[2].value.text = "";
-     
-        var alertsToHighlightsLine = new AlertsToHighlightsLine(session);
-        details.detailLines[3].value = alertsToHighlightsLine.getAlertsLine(me.sessionDetailsValueXPos, me.sessionDetailsAlertsLineYOffset);
-        
-        var hrvStatusLine = details.detailLines[4];
-        me.setInitialHrvStatus(hrvStatusLine, session);
-        
+        if (session.time > 59)	{
+        	details.detailLines[2].value.text = "    " + TimeFormatter.formatMinutes(session.time);
+		} else {
+			details.detailLines[2].value.text = "    " + TimeFormatter.formatSeconds(session.time);
+		}
+		
         details.setAllIconsXPos(me.sessionDetailsIconsXPos);
         details.setAllValuesXPos(me.sessionDetailsValueXPos);
 		details.setAllLinesYOffset(me.sessionDetailsYOffset);
@@ -172,21 +163,5 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
 	function createScreenPickerView() {
 		me.setSelectedSessionDetails();
 		return new ScreenPicker.ScreenPickerDetailsView(me.mSelectedSessionDetails);
-	}
-	
-	class AlertsToHighlightsLine {
-		function initialize(session) {
-			me.mSession = session;
-		}
-		
-		private var mSession;
-		
-		function getAlertsLine(alertsLineXPos, alertsLineYOffset) {
-	        return 0;
-		}
-				
-		private function AddHighlights(alertsLine, alertsType) {
-			
-		}
 	}
 }

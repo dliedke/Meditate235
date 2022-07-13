@@ -59,24 +59,6 @@ class MeditateView extends Ui.View {
         });
     }
     
-    private function renderHrvStatusLayout(dc) {
-    	var hrvIconXPos = App.getApp().getProperty("meditateActivityIconsXPos");
-    	var hrvTextYPos =  getYPosOffsetFromCenter(dc, 1);
-        var iconsYOffset = App.getApp().getProperty("meditateActivityIconsYOffset");
-        var hrvIconYPos = hrvTextYPos + iconsYOffset;
-        me.mHrvIcon =  new ScreenPicker.Icon({        
-        	:font => Gfx.FONT_SMALL,
-        	:symbol => "HRV",
-        	:color=>Graphics.COLOR_PURPLE,
-        	:xPos => hrvIconXPos,
-        	:yPos => hrvTextYPos
-        });
-        
-        var xHrvTextOffset = App.getApp().getProperty("meditateActivityXHrvTextOffset");
-        var hrvTextXPos = hrvIconXPos + xHrvTextOffset;
-        me.mHrvText = createMeditateText(Gfx.COLOR_WHITE, TextFont, hrvTextXPos, hrvTextYPos, Gfx.TEXT_JUSTIFY_LEFT); 
-    }
-    
     private function getYPosOffsetFromCenter(dc, lineOffset) {
     	return dc.getHeight() / 2 + lineOffset * dc.getFontHeight(TextFont);
     }
@@ -97,9 +79,6 @@ class MeditateView extends Ui.View {
         me.mMainDuationRenderer = new ElapsedDuationRenderer(me.mMeditateModel.getColor(), durationArcRadius, mainDurationArcWidth);
       	  
         renderHrStatusLayout(dc);
-        if (me.mMeditateModel.isHrvOn() == true) {
-	        renderHrvStatusLayout(dc);
-        }
     }
     
     // Called when this View is brought to the foreground. Restore

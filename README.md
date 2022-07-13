@@ -1,6 +1,6 @@
 # Meditate
 
-A Garmin Connect IQ meditation app that tracks as an activity the heart rate and provides vibration alert for Garmin Forerunner 235.
+A Garmin Connect IQ meditation app (originally from vtrifonov) that tracks as an activity the heart rate and provides vibration alert for Garmin Forerunner 235.
 ## Features
 
 - ability to save the session as a Connect IQ activity

@@ -13,7 +13,4 @@ A Garmin Connect IQ meditation app that tracks as an activity the heart rate and
 
 ## Supported Devices
 - Garmin Forerunner 235
- 
-## [User Guide](UserGuide.md)
-
 

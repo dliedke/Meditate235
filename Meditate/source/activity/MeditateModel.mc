@@ -8,6 +8,7 @@ class MeditateModel {
 		me.minHr = null;
 		me.currentHr = null;
 		me.hrvSuccessive = null;
+		me.isTimerRunning = false;
 	}
 	
 	private var mSession;
@@ -16,6 +17,7 @@ class MeditateModel {
 	var minHr;
 	var elapsedTime;
 	var hrvSuccessive;
+	var isTimerRunning;
 	
 	function isHrvOn() {
 		return false;

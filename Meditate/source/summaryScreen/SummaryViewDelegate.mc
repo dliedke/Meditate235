@@ -46,7 +46,7 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
         details.titleColor = Gfx.COLOR_BLACK;
 
         details.detailLines[1].value.color = Gfx.COLOR_BLACK;
-        details.detailLines[1].value.text = "                          " + TimeFormatter.format(me.mSummaryModel.elapsedTime);
+        details.detailLines[1].value.text = "                  Time: " + TimeFormatter.format(me.mSummaryModel.elapsedTime);
      
         details.detailLines[2].value.color = Gfx.COLOR_BLACK;
         details.detailLines[2].value.text = "                     Min: " + me.formatHr(me.mSummaryModel.minHr);

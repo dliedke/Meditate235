@@ -13,11 +13,11 @@
 	<property id="summaryStressValueXPos" type="number">70</property>
 	<property id="summaryHrvIconsXPos" type="number">50</property>
 	<property id="summaryHrvValueXPos" type="number">70</property>
-	<property id="summaryLinesYOffset" type="number">20</property>
-	<property id="meditateActivityIconsXPos" type="number">80</property>
+	<property id="summaryLinesYOffset" type="number">10</property>
+	<property id="meditateActivityIconsXPos" type="number">86</property>
 	<property id="meditateActivityIconsYOffset" type="number">5</property>
 	<property id="meditateActivityXHrvTextOffset" type="number">20</property>
-	<property id="detailsModelLineHeight" type="number">32</property>
+	<property id="detailsModelLineHeight" type="number">27</property>
 	<property id="detailsModelIconHeight" type="number">32</property>
 	<property id="hmmTimePickerOutputXOffset" type="number">85</property>
 	<property id="mmssTimePickerOutputXOffset" type="number">75</property>

@@ -44,15 +44,15 @@ class MeditateView extends Ui.View {
     
     private function renderHrStatusLayout(dc) {
     	var xPosText = dc.getWidth() / 2;
-    	var yPosText = getYPosOffsetFromCenter(dc, 0);
-      	me.mHrStatusText = createMeditateText(Gfx.COLOR_WHITE, TextFont, xPosText, yPosText, Gfx.TEXT_JUSTIFY_CENTER); 
+    	var yPosText = getYPosOffsetFromCenter(dc, 1);
+      	me.mHrStatusText = createMeditateText(Gfx.COLOR_WHITE, TextFont, xPosText + 6, yPosText + 4, Gfx.TEXT_JUSTIFY_CENTER); 
       	
   	    var hrStatusX = App.getApp().getProperty("meditateActivityIconsXPos");
 		var iconsYOffset = App.getApp().getProperty("meditateActivityIconsYOffset");  
-        var hrStatusY = getYPosOffsetFromCenter(dc, 0) + iconsYOffset; 
+        var hrStatusY = getYPosOffsetFromCenter(dc, 1) + iconsYOffset; 
   	    me.mHrStatus = new ScreenPicker.Icon({        
         	:font => Gfx.FONT_SMALL,
-        	:symbol => "HR",
+        	:symbol => "HR:",
         	:color=>Graphics.COLOR_RED,
         	:xPos => hrStatusX,
         	:yPos => hrStatusY
@@ -75,7 +75,7 @@ class MeditateView extends Ui.View {
         renderLayoutElapsedTime(dc);  
 		        
         var durationArcRadius = dc.getWidth() / 2;
-        var mainDurationArcWidth = dc.getWidth() / 4;
+        var mainDurationArcWidth = (dc.getWidth() / 4) - 10;
         me.mMainDuationRenderer = new ElapsedDuationRenderer(me.mMeditateModel.getColor(), durationArcRadius, mainDurationArcWidth);
       	  
         renderHrStatusLayout(dc);
@@ -113,7 +113,15 @@ class MeditateView extends Ui.View {
         if (me.mMeditateIcon != null) {
         	mMeditateIcon.draw(dc);
         }
-		me.mElapsedTime.setText(TimeFormatter.format(me.mMeditateModel.elapsedTime));		
+		
+		var timeText = "Time: " + TimeFormatter.format(me.mMeditateModel.elapsedTime);
+
+		// Check if activity is paused, render the [Paused] text
+		if (!me.mMeditateModel.isTimerRunning)  {
+			timeText = Ui.loadResource(Rez.Strings.meditateActivityPaused);
+		}
+
+		me.mElapsedTime.setText(timeText);	
 		me.mElapsedTime.draw(dc);
                     
         var alarmTime = me.mMeditateModel.getSessionTime();
@@ -122,15 +130,9 @@ class MeditateView extends Ui.View {
 		me.mHrStatusText.setText(me.formatHr(me.mMeditateModel.currentHr));
 		me.mHrStatusText.draw(dc);        
      	me.mHrStatus.draw(dc);	       	
-     	
- 	    if (me.mMeditateModel.isHrvOn() == true) {
-	        me.mHrvIcon.draw(dc);
-	        me.mHrvText.setText(me.formatHrv(me.mMeditateModel.hrvSuccessive));
-	        me.mHrvText.draw(dc); 
-        }
+     
     }
-    
-
+    	
     // Called when this View is removed from the screen. Save the
     // state of this View here. This includes freeing resources from
     // memory.

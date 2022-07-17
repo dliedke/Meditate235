@@ -150,9 +150,9 @@ class SessionPickerDelegate extends ScreenPicker.ScreenPickerDelegate {
         details.titleColor = session.color;
         
         if (session.time > 59)	{
-        	details.detailLines[2].value.text = "    " + TimeFormatter.formatMinutes(session.time);
+        	details.detailLines[1].value.text = "    " + TimeFormatter.formatMinutes(session.time);
 		} else {
-			details.detailLines[2].value.text = "    " + TimeFormatter.formatSeconds(session.time);
+			details.detailLines[1].value.text = "    " + TimeFormatter.formatSeconds(session.time);
 		}
 		
         details.setAllIconsXPos(me.sessionDetailsIconsXPos);

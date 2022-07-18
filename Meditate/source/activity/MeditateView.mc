@@ -115,10 +115,12 @@ class MeditateView extends Ui.View {
         }
 		
 		var timeText = "Time: " + TimeFormatter.format(me.mMeditateModel.elapsedTime);
+		var currentHr = me.mMeditateModel.currentHr;
 
-		// Check if activity is paused, render the [Paused] text
+		// Check if activity is paused, render the [Paused] text and hide HR metrics
 		if (!me.mMeditateModel.isTimerRunning)  {
 			timeText = Ui.loadResource(Rez.Strings.meditateActivityPaused);
+			currentHr = null;
 		}
 
 		me.mElapsedTime.setText(timeText);	
@@ -127,7 +129,7 @@ class MeditateView extends Ui.View {
         var alarmTime = me.mMeditateModel.getSessionTime();
 		me.mMainDuationRenderer.drawOverallElapsedTime(dc, me.mMeditateModel.elapsedTime, alarmTime);
 		
-		me.mHrStatusText.setText(me.formatHr(me.mMeditateModel.currentHr));
+		me.mHrStatusText.setText(me.formatHr(currentHr));
 		me.mHrStatusText.draw(dc);        
      	me.mHrStatus.draw(dc);	       	
      

@@ -42,4 +42,12 @@ class MeditateModel {
 	function getActivityType() {
 		return me.mSession.activityType;
 	}
+
+	function getRepeatIntervalAlerts() {
+		var result = {};
+		var intervalAlerts = new IntervalAlerts();
+		intervalAlerts.addNew();
+		result.put(0,intervalAlerts.get(0));
+		return result;
+	}
 }

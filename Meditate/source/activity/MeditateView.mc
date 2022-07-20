@@ -23,7 +23,8 @@ class MeditateView extends Ui.View {
 	private var mHrvIcon;
 	private var mHrvText;	
     private var mMeditateIcon;
-        
+    private var mIntervalAlertsRenderer;
+
     private function createMeditateText(color, font, xPos, yPos, justification) {
     	return new Ui.Text({
         	:text => "",
@@ -77,7 +78,13 @@ class MeditateView extends Ui.View {
         var durationArcRadius = dc.getWidth() / 2;
         var mainDurationArcWidth = (dc.getWidth() / 4) - 10;
         me.mMainDuationRenderer = new ElapsedDuationRenderer(me.mMeditateModel.getColor(), durationArcRadius, mainDurationArcWidth);
-      	  
+
+
+		// Initialize interval alerts		
+		var intervalAlertsArcRadius = dc.getWidth() / 2;
+		var intervalAlertsArcWidth = dc.getWidth() / 16;
+		me.mIntervalAlertsRenderer = new IntervalAlertsRenderer(me.mMeditateModel.getSessionTime(), me.mMeditateModel.getRepeatIntervalAlerts(), intervalAlertsArcRadius, intervalAlertsArcWidth);    
+
         renderHrStatusLayout(dc);
     }
     
@@ -129,6 +136,11 @@ class MeditateView extends Ui.View {
         var alarmTime = me.mMeditateModel.getSessionTime();
 		me.mMainDuationRenderer.drawOverallElapsedTime(dc, me.mMeditateModel.elapsedTime, alarmTime);
 		
+		// Render interval alerts
+		if (me.mIntervalAlertsRenderer != null) {
+			me.mIntervalAlertsRenderer.drawRepeatIntervalAlerts(dc);
+		}
+
 		me.mHrStatusText.setText(me.formatHr(currentHr));
 		me.mHrStatusText.draw(dc);        
      	me.mHrStatus.draw(dc);	       	

@@ -13,6 +13,25 @@ class TimeFormatter {
 		return formattedTime;
 	}
 
+	static function formatHours(timeInSec) {		
+		var timeCalc = timeInSec;
+		var seconds = timeCalc % 60;
+		timeCalc /= 60;
+		var minutes = timeCalc % 60;
+		timeCalc /= 60;
+		var hours = timeCalc % 24;
+		
+		var formattedTime;
+		
+		if (hours == 1) {
+			formattedTime = Lang.format("$1$ hour", [hours.format("%02d")]);
+		} else {
+			formattedTime = Lang.format("$1$ hours", [hours.format("%02d")]);
+		}
+
+		return formattedTime;
+	}
+
 	static function formatMinutes(timeInSec) {		
 		var timeCalc = timeInSec;
 		var seconds = timeCalc % 60;

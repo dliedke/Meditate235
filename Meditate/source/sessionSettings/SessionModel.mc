@@ -95,33 +95,31 @@ class SessionModel {
 		me.activityType = "Meditate";
 		}
 
-		// 15s for testing
+		// 45min
 		if (index == 6) {
+		me.time = 45 * 60;
+		me.color = Gfx.COLOR_GREEN;
+		me.vibePattern = VibePattern.LongContinuous;		
+		me.activityType = "Meditate";
+		}
+
+		// 1h
+		if (index == 7) {
+		me.time = 60 * 60;
+		me.color = Gfx.COLOR_YELLOW;
+		me.vibePattern = VibePattern.LongContinuous;		
+		me.activityType = "Meditate";
+		}
+
+		// 15s for testing
+		if (index == 8) {
 		me.time = 15;
 		me.color = Gfx.COLOR_GREEN;
 		me.vibePattern = VibePattern.LongContinuous;		
 		me.activityType = "Meditate";
 		}
 	}
-	
-	function copyNonNullFieldsFromSession(otherSession) {
-    	if (otherSession.time != null) {
-    		me.time = otherSession.time;
-    	}
-    	if (otherSession.color != null) {
-    		me.color = otherSession.color;
-    	}
-    	if (otherSession.vibePattern != null) {
-    		me.vibePattern = otherSession.vibePattern;
-    	}
-    	if (otherSession.activityType != null) {
-    		me.activityType = otherSession.activityType;
-    	}
-    	if (otherSession.hrvTracking != null) {
-    		me.hrvTracking = otherSession.hrvTracking;
-    	}
-	}
-		
+			
 	var time;
 	var color;
 	var vibePattern;

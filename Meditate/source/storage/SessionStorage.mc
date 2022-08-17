@@ -4,7 +4,7 @@ using Toybox.Graphics as Gfx;
 class SessionStorage {
 	function initialize() {	
 		mSelectedSessionIndex = 0;
-		me.mSessionsCount = 9;
+		me.mSessionsCount = 7;
 		me.loadSelectedSession();
 	}	
 	
@@ -32,7 +32,7 @@ class SessionStorage {
 	}
 	
 	function getSessionsCount() {
-		return 9;
+		return 7;
 	}
 	
 	function getSelectedSessionIndex() {

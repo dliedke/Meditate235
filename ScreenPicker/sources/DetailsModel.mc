@@ -52,7 +52,7 @@ module ScreenPicker {
 	class TextValue {
 		function initialize() {
 			me.text = "";
-			me.font = Gfx.FONT_SYSTEM_TINY;
+			me.font = Gfx.FONT_SYSTEM_MEDIUM;
 			me.color = Gfx.COLOR_WHITE;
 			me.xPos = 0;
 		}
@@ -149,7 +149,7 @@ module ScreenPicker {
 	class DetailsModel{
 		function initialize() {
 			me.title = "";
-			me.titleFont = Gfx.FONT_SYSTEM_MEDIUM;
+			me.titleFont = Gfx.FONT_SYSTEM_LARGE;
 			me.color = null;
 			me.titleColor = null;
 			me.backgroundColor = null;

@@ -6,6 +6,9 @@ using Toybox.Sensor;
 module HrvAlgorithms {
 	class HrActivity {
 		function initialize(fitSessionSpec) {
+			//DEBUG
+			//PopulateFakeHRHistory();
+
 			me.mFitSession = ActivityRecording.createSession(fitSessionSpec);
 			me.createMinHrDataField();	
 			me.onBeforeStart(me.mFitSession);
@@ -75,20 +78,41 @@ module HrvAlgorithms {
 		private const MinHrFieldId = 0;
 		private var mMinHrField;
 		private var mMinHr;
-				
+		private var mHRHistory = [];
+
+		//DEBUG - start - test the heart rate chart instantaneously for X minutes
+		//                also change min/max HR fixed in class HeartRateGraphView and
+		//                call this method in initialize() of this class
+		/*var numMinutes = 10;
+		var mHRHistory1Min = [55,55,55,55,56,56,56,56,56,58,58,58,62,62,62,65,65,65,65,70,70,70,70,72,72,72,72,73,73,73,73,74,74,76,76,76,76,78,78,78,78,120,130,125,123,110,100,90,78,77,77,74,74,72,72,67,67,67,67,67];
+		private function PopulateFakeHRHistory() {
+
+			for (var f=1;f<=numMinutes;f++) {
+
+				for (var i=0;i<mHRHistory1Min.size();i++)
+				{
+					mHRHistory.add(mHRHistory1Min[i]);
+				}
+			}
+		}*/
+		//DEBUG - end
+
 		function refreshActivityStats() {
-			//if (me.mFitSession.isRecording() == false) {
-			//	return;
-		    //}	
 		    
 			var activityInfo = Activity.getActivityInfo();
 			if (activityInfo == null) {
 				return;
 			}
 
-			if (activityInfo.currentHeartRate != null && (me.mMinHr == null || me.mMinHr > activityInfo.currentHeartRate)) {
-	    		me.mMinHr = activityInfo.currentHeartRate;
-	    	}
+			if (me.mFitSession.isRecording()) {
+
+				if (activityInfo.currentHeartRate != null && (me.mMinHr == null || me.mMinHr > activityInfo.currentHeartRate)) {
+					me.mMinHr = activityInfo.currentHeartRate;
+				}
+
+				mHRHistory.add(activityInfo.currentHeartRate);
+			}
+
 	    	me.onRefreshHrActivityStats(activityInfo, me.mMinHr);
 		}
 		
@@ -106,6 +130,9 @@ module HrvAlgorithms {
 			summary.averageHr = activityInfo.averageHeartRate;
 			summary.minHr = me.mMinHr;
 			summary.elapsedTimeSeconds = activityInfo.elapsedTime / 1000;
+
+			summary.hrHistory = me.mHRHistory;
+
 			return summary;
 		}
 								

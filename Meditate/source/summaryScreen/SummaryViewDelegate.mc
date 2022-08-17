@@ -28,35 +28,6 @@ class SummaryViewDelegate extends ScreenPicker.ScreenPickerDelegate {
 	}
 	
 	function createScreenPickerView() {
-		var details;
-		details = me.createDetailsPageHr();
-		return new ScreenPicker.ScreenPickerDetailsView(details);
+		return new HeartRateGraphView(me.mSummaryModel);
 	}	
-				
-	private function formatHr(hr) {
-		return hr + " bpm";
-	}
-	
-	private function createDetailsPageHr() {
-
-		var details = new ScreenPicker.DetailsModel();
-		details.color = Gfx.COLOR_BLACK;
-        details.backgroundColor = Gfx.COLOR_WHITE;
-        details.title = "Summary HR";
-        details.titleColor = Gfx.COLOR_BLACK;
-
-        details.detailLines[1].value.color = Gfx.COLOR_BLACK;
-        details.detailLines[1].value.text = "                  Time: " + TimeFormatter.format(me.mSummaryModel.elapsedTime);
-     
-        details.detailLines[2].value.color = Gfx.COLOR_BLACK;
-        details.detailLines[2].value.text = "                     Min: " + me.formatHr(me.mSummaryModel.minHr);
-        
-        details.detailLines[3].value.color = Gfx.COLOR_BLACK;  
-        details.detailLines[3].value.text = "                     Avg: " + me.formatHr(me.mSummaryModel.avgHr);
-        
-        details.detailLines[4].value.color = Gfx.COLOR_BLACK; 
-        details.detailLines[4].value.text = "                     Max: " +me.formatHr(me.mSummaryModel.maxHr);
-		
-        return details;
-	}
 }

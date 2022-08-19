@@ -5,4 +5,7 @@
     <string id="summaryRollupMenuOption_exit">Exit</string>
 	<string id="activityDelayedFinishingText">Finishing...</string>
     <string id="meditateActivityPaused">[Paused]</string>
+    <string id="activityName">Activity Name (use [time] to be replaced by session time and also keep name short):</string>
+    <string id="mediateActivitySimpleName">Meditating</string>
+    <string id="mediateActivityName">Meditating [time] 🙏</string>
 </strings>

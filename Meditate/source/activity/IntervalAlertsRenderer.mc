@@ -15,7 +15,6 @@ class IntervalAlertsRenderer {
 	private var mRadius;
 	private var mWidth;	
     private var mRepeatPercentageTimes;
-	private const StartDegreeOffset = 90;
     
     function drawRepeatIntervalAlerts(dc) {    
 		me.drawIntervalAlerts(dc, me.mRepeatIntervalAlerts, me.mRepeatPercentageTimes);
@@ -70,6 +69,6 @@ class IntervalAlertsRenderer {
     }
         
     private static function percentageToArcDegree(percentage) {
-    	return StartDegreeOffset - percentage * 3.6;
+    	return 90 - percentage * 3.6;
     }
 }

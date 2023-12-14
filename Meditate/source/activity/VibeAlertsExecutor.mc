@@ -24,7 +24,10 @@ class VibeAlertsExecutor {
 		
 			// Vibrate long continuous
 			Attention.vibrate(getLongContinuous());
-		
+			
+			// Play sound in the end
+			playFinalTone();
+
 			me.mIsFinalAlertPending = false;
 	    }
 	}
@@ -41,8 +44,13 @@ class VibeAlertsExecutor {
 
 	private static function getLongContinuous() {
 		return [
-			new Attention.VibeProfile(100, 3000)
+			new Attention.VibeProfile(100, 4500)
 		];
+	}
+
+	private static function playFinalTone() {
+
+		Attention.playTone (Attention.TONE_START);
 	}
 
 	private static function getBlip() {

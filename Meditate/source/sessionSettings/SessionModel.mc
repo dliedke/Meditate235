@@ -102,14 +102,6 @@ class SessionModel {
 		me.vibePattern = VibePattern.LongContinuous;		
 		me.activityType = "Meditate";
 		}
-
-		// 60min
-		if (index == 7) {
-		me.time = 60 * 60;
-		me.color = Gfx.COLOR_BLUE;
-		me.vibePattern = VibePattern.LongContinuous;		
-		me.activityType = "Meditate";
-		}
 	}
 			
 	var time;

@@ -24,7 +24,7 @@ class MediteActivity extends HrvAlgorithms.HrvAndStressActivity {
 			Application.getApp().setProperty("activityName", activityNameProperty);
 		}
 		
-		fitSessionSpec = HrvAlgorithms.FitSessionSpec.createCardio(createSessionName(sessionTime, activityNameProperty));
+		fitSessionSpec = HrvAlgorithms.FitSessionSpec.createMeditation(createSessionName(sessionTime, activityNameProperty));
 
 		me.mMeditateModel = meditateModel;	
 		HrvAlgorithms.HrvAndStressActivity.initialize(fitSessionSpec, meditateModel.getHrvTracking(), heartbeatIntervalsSensor);			

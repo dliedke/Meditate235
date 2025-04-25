@@ -3,11 +3,12 @@ using Toybox.ActivityRecording;
 module HrvAlgorithms {
 	class FitSessionSpec {
 		
-		static function createCardio(sessionName) {
+		private static const SPORT_MEDITATION = 67;
+
+		static function createMeditation(sessionName) {
 			return {
                  :name => sessionName,                              
-                 :sport => ActivityRecording.SPORT_TRAINING,      
-                 :subSport => ActivityRecording.SUB_SPORT_GENERIC
+                 :sport => SPORT_MEDITATION
                 };
 		}
 	}

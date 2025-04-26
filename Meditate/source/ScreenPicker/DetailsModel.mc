@@ -125,8 +125,8 @@ module ScreenPicker {
 		function initialize(lineNumber) {	
 			me.mLineNumber = lineNumber;
 			me.yLineOffset = 0;
-			me.lineHeight = App.getApp().getProperty("detailsModelLineHeight");
-			me.iconHeight = App.getApp().getProperty("detailsModelIconHeight");
+			me.lineHeight = 32;
+			me.iconHeight = 32;
 		}
 	
 		var yLineOffset;

@@ -15,10 +15,6 @@ class TimeFormatter {
 
 	static function formatHours(timeInSec) {		
 		var timeCalc = timeInSec;
-		var seconds = timeCalc % 60;
-		timeCalc /= 60;
-		var minutes = timeCalc % 60;
-		timeCalc /= 60;
 		var hours = timeCalc % 24;
 		
 		var formattedTime;
@@ -34,11 +30,9 @@ class TimeFormatter {
 
 	static function formatMinutes(timeInSec) {		
 		var timeCalc = timeInSec;
-		var seconds = timeCalc % 60;
 		timeCalc /= 60;
 		var minutes = timeCalc % 60;
 		timeCalc /= 60;
-		var hours = timeCalc % 24;
 		
 		var formattedTime = Lang.format("$1$ Minutes", [minutes.format("%02d")]);
 		return formattedTime;
@@ -48,9 +42,7 @@ class TimeFormatter {
 		var timeCalc = timeInSec;
 		var seconds = timeCalc % 60;
 		timeCalc /= 60;
-		var minutes = timeCalc % 60;
 		timeCalc /= 60;
-		var hours = timeCalc % 24;
 		
 		var formattedTime = Lang.format("$1$ Seconds", [seconds.format("%02d")]);
 		return formattedTime;

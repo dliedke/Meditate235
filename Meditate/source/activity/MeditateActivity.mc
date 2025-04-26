@@ -4,7 +4,7 @@ using Toybox.FitContributor;
 using Toybox.Timer;
 using Toybox.Math;
 using Toybox.Sensor;
-using HrvAlgorithms.HrvTracking;
+using HrvAlgorithms;
 
 class MediteActivity extends HrvAlgorithms.HrvAndStressActivity {
 	private var mMeditateModel;
